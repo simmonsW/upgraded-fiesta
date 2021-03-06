@@ -1,5 +1,6 @@
 // Assignment code here
 function generatePassword() {
+  // get desired password length
   var passwordLength = prompt("What length would you like your password to be? Choose anywhere from 8 - 128.");
   console.log(passwordLength);
 
@@ -15,25 +16,44 @@ function generatePassword() {
     return;
   }
 
+  // character selection
   alert('Please select which characters to use.');
 
-  var lowerCase = confirm("Use lowercase letters?");
-  console.log(lowerCase);
+  var lowerCaseConfirm = confirm("Use lowercase letters?");
+  console.log(lowerCaseConfirm);
 
-  var upperCase = confirm("Use uppercase letters?");
-  console.log(upperCase);
+  var upperCaseConfirm = confirm("Use uppercase letters?");
+  console.log(upperCaseConfirm);
 
-  var numbers = confirm("Use numbers 0 - 9?");
-  console.log(numbers);
+  var numbersConfirm = confirm("Use numbers 0 - 9?");
+  console.log(numbersConfirm);
 
-  var specialCharacters = confirm("Use special characters?");
-  console.log(specialCharacters);
+  var specialCharactersConfirm = confirm("Use special characters?");
+  console.log(specialCharactersConfirm);
 
-  if (!lowerCase && !upperCase && !numbers && !specialCharacters) {
+  // check if at least one character option is chosen
+  if (!lowerCaseConfirm && !upperCaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
     alert("you must select at least one character type.")
     generatePassword();
     return;
   }
+}
+// random character generator - https://www.net-comber.com/charset.html
+function getRandomLower() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+
+function getRandomUpper() {
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+
+function getRandomNumber() {
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+
+function getRandomSymbol() {
+  var symbols = " !#$%&'()*+,-./:;<=>?@[]\^_`{|}~";
+  return String.fromCharCode(Math.floor(Math.random() * symbols.length))
 }
 
 // Get references to the #generate element
