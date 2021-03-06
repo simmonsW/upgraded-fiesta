@@ -1,7 +1,16 @@
 // Assignment code here
-function generatePassword() {
+
+// global variables
+
+var lowerCaseConfirm;
+var upperCaseConfirm;
+var numbersConfirm;
+var symbolsConfirm;
+var passwordLength;
+
+function passwordChoicesPrompt() {
   // get desired password length
-  var passwordLength = prompt("What length would you like your password to be? Choose anywhere from 8 - 128.");
+  passwordLength = prompt("What length would you like your password to be? Choose anywhere from 8 - 128.");
   console.log(passwordLength);
 
   // check password length
@@ -19,16 +28,16 @@ function generatePassword() {
   // character selection
   alert('Please select which characters to use.');
 
-  var lowerCaseConfirm = confirm("Use lowercase letters?");
+  lowerCaseConfirm = confirm("Use lowercase letters?");
   console.log(lowerCaseConfirm);
 
-  var upperCaseConfirm = confirm("Use uppercase letters?");
+  upperCaseConfirm = confirm("Use uppercase letters?");
   console.log(upperCaseConfirm);
 
-  var numbersConfirm = confirm("Use numbers 0 - 9?");
+  numbersConfirm = confirm("Use numbers 0 - 9?");
   console.log(numbersConfirm);
 
-  var symbolsConfirm = confirm("Use special characters?");
+  symbolsConfirm = confirm("Use special characters?");
   console.log(symbolsConfirm);
 
   // check if at least one character option is chosen
@@ -37,11 +46,9 @@ function generatePassword() {
     generatePassword();
     return;
   }
+}
 
-  // actual password generation
-  function generator(lower, upper, number, symbol, passwordLength) {
-    
-  }
+function generatePassword(lower, upper, number, symbol, passwordLength) {
   // initialize password variable
 
   // filter out false choices
