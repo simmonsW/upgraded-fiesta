@@ -1,16 +1,24 @@
 // Assignment code here
 
 // global variables
-
 var lowerCaseConfirm;
 var upperCaseConfirm;
 var numbersConfirm;
 var symbolsConfirm;
 var passwordLength;
+var finalPassword;
+// randomized character functions object
+var randomFunc = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+};
 
 function passwordChoicesPrompt() {
   // get desired password length
   passwordLength = prompt("What length would you like your password to be? Choose anywhere from 8 - 128.");
+  passwordLength = parseInt(passwordLength);
   console.log(passwordLength);
 
   // check password length
@@ -41,11 +49,12 @@ function passwordChoicesPrompt() {
   console.log(symbolsConfirm);
 
   // check if at least one character option is chosen
-  if (!lowerCaseConfirm && !upperCaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
+  if (!lowerCaseConfirm && !upperCaseConfirm && !numbersConfirm && !symbolsConfirm) {
     alert("you must select at least one character type.")
     generatePassword();
     return;
   }
+  generatePassword(lowerCaseConfirm, upperCaseConfirm, numbersConfirm, symbolsConfirm, passwordLength);
 }
 
 function generatePassword(lower, upper, number, symbol, passwordLength) {
@@ -57,23 +66,25 @@ function generatePassword(lower, upper, number, symbol, passwordLength) {
 
   // add final password to password var and return
 
-  var generatedPass = '';
+  finalPassword = '';
 
-  var typesCounter = lowerCaseConfirm + upperCaseConfirm + numbersConfirm + symbolsConfirm;
+  var typesCounter = lower + upper + number + symbol;
   console.log('typesCounter:', typesCounter);
 
-  var typesArr = [{lowerCaseConfirm}, {upperCaseConfirm}, {numbersConfirm}, {symbolsConfirm}];
+  var typesArr = [{lower}, {upper}, {number}, {symbol}].filter( item => Object.values(item)[0]);
   console.log('typesArr', typesArr);
-  
 
-  // randomized character functions object
-  var randomFunc = {
-    lower: getRandomLower,
-    upper: getRandomUpper,
-    number: getRandomNumber,
-    symbol: getRandomSymbol,
-  };
-  console.log(randomFunc);
+  for (var i = 0; i < passwordLength; i += typesCounter) {
+    typesArr.forEach(type => {
+      var funcName = Object.keys(type)[0];
+      console.log('funcName: ', funcName);
+
+      finalPassword += randomFunc[funcName]();
+      console.log('finalPassword', finalPassword);
+    });
+  }
+  console.log(finalPassword);
+  return finalPassword;
 }
 
 // random character generator - https://www.net-comber.com/charset.html
@@ -100,7 +111,7 @@ var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
 function writePassword() {
   passwordChoicesPrompt();
-  var password = generatePassword();
+  var password = finalPassword;
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
