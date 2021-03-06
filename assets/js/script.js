@@ -28,8 +28,8 @@ function generatePassword() {
   var numbersConfirm = confirm("Use numbers 0 - 9?");
   console.log(numbersConfirm);
 
-  var specialCharactersConfirm = confirm("Use special characters?");
-  console.log(specialCharactersConfirm);
+  var symbolsConfirm = confirm("Use special characters?");
+  console.log(symbolsConfirm);
 
   // check if at least one character option is chosen
   if (!lowerCaseConfirm && !upperCaseConfirm && !numbersConfirm && !specialCharactersConfirm) {
@@ -37,7 +37,38 @@ function generatePassword() {
     generatePassword();
     return;
   }
+
+  // actual password generation
+  function generator(lower, upper, number, symbol, passwordLength) {
+    
+  }
+  // initialize password variable
+
+  // filter out false choices
+
+  // loop over the desired password length
+
+  // add final password to password var and return
+
+  var generatedPass = '';
+
+  var typesCounter = lowerCaseConfirm + upperCaseConfirm + numbersConfirm + symbolsConfirm;
+  console.log('typesCounter:', typesCounter);
+
+  var typesArr = [{lowerCaseConfirm}, {upperCaseConfirm}, {numbersConfirm}, {symbolsConfirm}];
+  console.log('typesArr', typesArr);
+  
+
+  // randomized character functions object
+  var randomFunc = {
+    lower: getRandomLower,
+    upper: getRandomUpper,
+    number: getRandomNumber,
+    symbol: getRandomSymbol,
+  };
+  console.log(randomFunc);
 }
+
 // random character generator - https://www.net-comber.com/charset.html
 function getRandomLower() {
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -53,7 +84,7 @@ function getRandomNumber() {
 
 function getRandomSymbol() {
   var symbols = " !#$%&'()*+,-./:;<=>?@[]\^_`{|}~";
-  return String.fromCharCode(Math.floor(Math.random() * symbols.length))
+  return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 // Get references to the #generate element
@@ -61,6 +92,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+  passwordChoicesPrompt();
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
