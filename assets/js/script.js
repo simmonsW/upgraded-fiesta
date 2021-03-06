@@ -21,6 +21,13 @@ function passwordChoicesPrompt() {
   passwordLength = parseInt(passwordLength);
   console.log(passwordLength);
 
+  // check if passwordLength is not a number
+  if (Number.isNaN) {
+    alert("Your input was not a number. Please select a number.");
+    generatePassword();
+    return;
+  }
+
   // check password length
   if (passwordLength < 8) {
     alert("That is too short. please choose between 8 - 128.");
@@ -59,21 +66,16 @@ function passwordChoicesPrompt() {
 
 function generatePassword(lower, upper, number, symbol, passwordLength) {
   // initialize password variable
-
-  // filter out false choices
-
-  // loop over the desired password length
-
-  // add final password to password var and return
-
   finalPassword = '';
 
+  // filter out false choices
   var typesCounter = lower + upper + number + symbol;
   console.log('typesCounter:', typesCounter);
 
   var typesArr = [{lower}, {upper}, {number}, {symbol}].filter( item => Object.values(item)[0]);
   console.log('typesArr', typesArr);
 
+  // loop over the desired password length
   for (var i = 0; i < passwordLength; i += typesCounter) {
     typesArr.forEach(type => {
       var funcName = Object.keys(type)[0];
@@ -83,6 +85,7 @@ function generatePassword(lower, upper, number, symbol, passwordLength) {
       console.log('finalPassword', finalPassword);
     });
   }
+  // return finalPassword
   console.log(finalPassword);
   return finalPassword;
 }
