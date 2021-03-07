@@ -22,7 +22,7 @@ function passwordChoicesPrompt() {
   console.log(passwordLength);
 
   // check if passwordLength is not a number
-  if (Number.isNaN) {
+  if (Number.isNaN(passwordLength)) {
     alert("Your input was not a number. Please select a number.");
     generatePassword();
     return;
