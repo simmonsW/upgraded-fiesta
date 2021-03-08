@@ -104,7 +104,7 @@ function getRandomNumber() {
 }
 
 function getRandomSymbol() {
-  var symbols = " !#$%&'()*+,-./:;<=>?@[]\^_`{|}~";
+  var symbols = " !#$%&'()*+,-./:;<=>?@[]_`{|}~";
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
