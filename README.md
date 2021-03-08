@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 
 <img src="assets/images/screenshot.png" alt="Password Generator Screenshot" width="100%">
 
