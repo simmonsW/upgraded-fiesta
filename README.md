@@ -1,6 +1,6 @@
 # Password Generator Starter Code
 
-<img src="assets/images/passwordGeneratorScreenshot.png" alt="Password Generator Screenshot" width="600px">
+<img src="assets/images/screenshot.png" alt="Password Generator Screenshot" width="600px">
 
 # Description
 
